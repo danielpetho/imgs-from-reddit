@@ -1,7 +1,5 @@
 import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT } from '../actions/index';
 
-
-
 export function settingsReducer(state = {
     autoplay: true,
     videos: true,
@@ -31,7 +29,7 @@ export function settingsReducer(state = {
                 });
 
             };
-            break;
+            return state;
 
         case TOGGLE_PICTURES:
             if (state.videos !== false) {
@@ -39,7 +37,7 @@ export function settingsReducer(state = {
                     pictures: action.pictures
                 });
             };
-            break;
+            return state;
 
         default:
             return state;

@@ -1,18 +1,20 @@
 import { connect } from "react-redux";
-import App from "../App";
+import Hashtag from "../components/layout/Hashtag";
 
 function mapStateToProps(state, props) {
     return {
+
     };
 }
 
 function mapDispatchToProps(dispatch, props) {
-    return {};
+    return {
+    };
 }
 
-const AppContainer = connect(
+const HashtagContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(App);
+)(Hashtag);
 
-export default AppContainer;
+export default HashtagContainer;

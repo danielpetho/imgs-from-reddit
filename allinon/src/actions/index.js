@@ -8,3 +8,6 @@ export const TOGGLE_PICTURES = 'TOGGLE_PICTURES';
 export const TOGGLE_VIEW = 'TOGGLE_VIEW';
 export const TOGGLE_SORT = 'TOGGLE_SORT';
 export const TOGGLE_AUTOPLAY = 'TOGGLE_AUTOPLAY';
+
+export const ADD_HASHTAG = 'ADD_HASHTAG';
+export const DELETE_HASHTAG = 'DELETE_HASHTAG';

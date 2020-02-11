@@ -37,10 +37,6 @@ function toggleAutoplay(autoplay) {
 
 
 export function toggleSettings(setting, flag) {
-    console.log("setting");
-    console.log(setting)
-    console.log("flag");
-    console.log(flag);
     return (dispatch) => {
         switch (setting) {
             case "autoplay":

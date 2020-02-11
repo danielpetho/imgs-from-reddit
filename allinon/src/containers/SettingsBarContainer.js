@@ -6,15 +6,14 @@ function mapStateToProps(state, props) {
     return {
         settings: state.settings
     };
-};
+}
 
 function mapDispatchToProps(dispatch, props) {
-    console.log(props);
     return {
         onToggle: (type, flag) => dispatch(toggleSettings(type, flag)),
 
     };
-};
+}
 
 const SettingsBarContainer = connect(
     mapStateToProps,
