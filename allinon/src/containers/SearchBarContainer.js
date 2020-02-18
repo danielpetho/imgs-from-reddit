@@ -10,7 +10,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        onSubmit: (e) => dispatch(addHashtag(e))
+        onLog: (searchValue) => dispatch(addHashtag(searchValue))
     };
 }
 

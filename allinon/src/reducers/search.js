@@ -8,9 +8,8 @@ export function searchReducer(state = {
 }, action) {
     switch (action.type) {
         case ADD_HASHTAG:
-            return Object.assign({}, state, {
-                hashtags: action.hashtag
-            });
+            console.log(action);
+            return state;
         case DELETE_HASHTAG:
             let newTags = state.hashtags;
             newTags = newTags.filter(e => e.id !== action.tagid);

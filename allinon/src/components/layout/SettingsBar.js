@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchBarContainer from '../../containers/SearchBarContainer';
+import {Link} from 'react-router-dom';
 
 const SettingsBar = (props) => {
     const { settings, onToggle, handleSubmit } = props;
@@ -12,7 +13,7 @@ const SettingsBar = (props) => {
                     <li onClick={() => onToggle("autoplay", !settings["autoplay"])} className={settings['autoplay'] ? "on" : "off"}>autoplay</li>
                     <li onClick={() => onToggle("sortposts", "top")} className={settings['sortposts'] === "top" ? "on" : "off"}>top</li>
                     <li onClick={() => onToggle("sortposts", "new")} className={settings['sortposts'] === "new" ? "on" : "off"}>new</li>
-                    <li>about</li>
+                    <Link to="/about"><li>about</li></Link>
                 </ul>
             </div>
             <div className="searchview">
