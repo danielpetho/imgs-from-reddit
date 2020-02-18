@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import SearchBar from "../components/layout/SearchBar";
-import { justLog } from "../actions/search";
+import {addHashtag} from "../actions/search";
 
 function mapStateToProps(state, props) {
     return {
@@ -10,7 +10,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        onLog: (e) => dispatch(justLog(e))
+        onSubmit: (e) => dispatch(addHashtag(e))
     };
 }
 

@@ -1,14 +1,16 @@
 import { connect } from "react-redux";
 import HashtagBar from "../components/layout/HashtagBar";
+import {deleteHashtag} from "../actions/search"
 
 function mapStateToProps(state) {
     return {
-        search: state.searchtags
+        searchtags: state.searchtagState
     };
 }
 
 function mapDispatchToProps(dispatch, props) {
     return {
+        onDelete: (e) => dispatch(deleteHashtag(e))
     };
 }
 

@@ -4,7 +4,7 @@ import { toggleSettings } from "../actions/settings";
 
 function mapStateToProps(state, props) {
     return {
-        settings: state.settings
+        settings: state.settingsState
     };
 }
 

@@ -1,20 +1,14 @@
 import React from 'react';
-import HashtagContainer from '../../containers/HashtagContainer';
 import Hashtag from './Hashtag';
 
 const HashtagBar = (props) => {
-    const { search } = props;
-    console.log(search);
-    let id = 0;
-    const hashtagList = search.hashtags.map(e => {
-        console.log(e);
-        console.log(id);
+    const { searchtags, onDelete } = props;
+    const hashtagList = searchtags.hashtags.map(e => {
         return (
-            <Hashtag key={id++} tag={e} />
+           <Hashtag key={e.id} id={e.id} tag={e.tag} onDelete={onDelete}/>
         )
     })
 
-    console.log(hashtagList)
     return (
         <div className="hashtag-bar">
             {hashtagList}

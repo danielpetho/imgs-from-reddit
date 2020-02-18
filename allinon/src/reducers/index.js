@@ -6,9 +6,9 @@ import { searchReducer } from './search';
 import { reducer as formReducer } from 'redux-form';
 
 export const store = createStore(combineReducers({
-    form: formReducer,
-    searchtags: searchReducer,
-    settings: settingsReducer
+    formState: formReducer,
+    searchtagState: searchReducer,
+    settingsState: settingsReducer
 }),
     composeWithDevTools(
         applyMiddleware(thunkMiddleware)
