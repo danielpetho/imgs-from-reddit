@@ -1,5 +1,7 @@
 import { ADD_HASHTAG, DELETE_HASHTAG } from '../actions/index';
 
+let tagId = 2;
+
 export function searchReducer(state = {
     hashtags: [
         {id: 1, tag: 'travel'},
@@ -8,8 +10,12 @@ export function searchReducer(state = {
 }, action) {
     switch (action.type) {
         case ADD_HASHTAG:
-            console.log(action);
-            return state;
+            let tags = state.hashtags;
+            tagId++;
+            tags.push({id: tagId, tag: action.hashtag });
+            return Object.assign({}, state, {
+                hashtags: tags
+            });
         case DELETE_HASHTAG:
             let newTags = state.hashtags;
             newTags = newTags.filter(e => e.id !== action.tagid);

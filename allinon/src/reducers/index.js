@@ -6,7 +6,7 @@ import { searchReducer } from './search';
 import { reducer as formReducer } from 'redux-form';
 
 export const store = createStore(combineReducers({
-    formState: formReducer,
+    form: formReducer,
     searchtagState: searchReducer,
     settingsState: settingsReducer
 }),
