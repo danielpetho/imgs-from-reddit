@@ -1,10 +1,10 @@
 import { ADD_HASHTAG, DELETE_HASHTAG } from './index';
 
-export function addHashtag(hashtag) {
-    console.log(hashtag)
+export function addHashtag(hashtags) {
+    console.log(hashtags)
     return {
         type: ADD_HASHTAG,
-        hashtag
+        hashtags
     };
 }
 

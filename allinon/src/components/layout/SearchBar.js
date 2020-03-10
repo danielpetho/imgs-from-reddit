@@ -5,7 +5,7 @@ import { SearchFormRenderer } from './SearchFormRenderer';
 let SearchForm = (props) => {
     const {handleSubmit} = props;
     return <form className="searchbar" onSubmit={handleSubmit}>
-        <Field type="text" name="searchValues" placeholder="#travel..." component="input" />
+        <Field type="text" name="searchValues" placeholder="art..." component="input" />
         <button type="submit"><i className="material-icons md-18">search</i></button>
     </form >
 }

@@ -10,7 +10,7 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        onLog: (searchValue) => dispatch(addHashtag(searchValue))
+        onLog: (searchValues) => dispatch(addHashtag(searchValues))
     };
 }
 
