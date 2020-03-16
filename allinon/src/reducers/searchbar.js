@@ -9,17 +9,10 @@ export function searchReducer(state = {
 }, action) {
     switch (action.type) {
         case ADD_HASHTAG:
-            //let newTags = state.hashtags;
-            let tags = action.hashtags;
-            let searchValues = tags.searchValues.split(" ");
-            let newHashtags = [];
-            for (const tag of searchValues) {
-                const obj = {id: ++tagId, tag: "#"+tag}
-                console.log(obj);
-                newHashtags.push(obj);
-            }
-            
-            console.log(newHashtags);
+            let newHashtags = state.hashtags;
+            console.log(action)
+            const obj = {id: ++tagId, tag: action.hashtag}
+            newHashtags.push(obj);
             return Object.assign({}, state, {
                 hashtags: newHashtags
             });
