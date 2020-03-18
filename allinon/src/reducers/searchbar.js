@@ -1,4 +1,4 @@
-import { ADD_HASHTAG, DELETE_HASHTAG } from '../actions/index';
+import { EMPTY_TAGS, ADD_HASHTAG, DELETE_HASHTAG } from '../actions/index';
 
 let tagId = 2;
 
@@ -8,9 +8,12 @@ export function searchReducer(state = {
     ]
 }, action) {
     switch (action.type) {
+        case EMPTY_TAGS:
+            return Object.assign({}, state, {
+                hashtags: []
+            });
         case ADD_HASHTAG:
             let newHashtags = state.hashtags;
-            console.log(action)
             const obj = {id: ++tagId, tag: action.hashtag}
             newHashtags.push(obj);
             return Object.assign({}, state, {

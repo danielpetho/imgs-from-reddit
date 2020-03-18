@@ -1,4 +1,4 @@
-import { ADD_HASHTAG, DELETE_HASHTAG } from './index';
+import { ADD_HASHTAG, DELETE_HASHTAG, EMPTY_TAGS } from './index';
 import { fetchPosts } from './fetch';
 
 function addHashtag(hashtag) {
@@ -16,13 +16,20 @@ export function deleteHashtag(tagid) {
     };
 }
 
+function emptyTags(tags) {
+    return {
+        type: EMPTY_TAGS,
+        tags
+    }
+}
+
 export function processQuery(tags) {
     const searchtags = tags.searchValues.split(" ");
     return (dispatch) => {
-        for (const tag of searchtags) {
+        dispatch(emptyTags(tags))
+        searchtags.forEach(tag => {
             dispatch(addHashtag(tag));
             dispatch(fetchPosts(tag));
-        }
-        
+        })        
     }
 }

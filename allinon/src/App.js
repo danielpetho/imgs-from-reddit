@@ -2,9 +2,9 @@ import React from 'react';
 import { HashRouter } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import './App.css';
-import Photo from './components/images/Photo';
 import SettingsBarContainer from './containers/SettingsBarContainer';
 import HashtagBarContainer from './containers/HashtagBarContainer';
+import MediaBarContainer from './containers/MediaBarContainer';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <SettingsBarContainer />
           <HashtagBarContainer />
         </div>
-        <Photo />
+        <MediaBarContainer />
       </div>
     </HashRouter>
   );

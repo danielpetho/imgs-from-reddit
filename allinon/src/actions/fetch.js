@@ -1,4 +1,4 @@
-import { FETCH_POSTS, REQUEST_POSTS, RECEIVE_POSTS } from "./index";
+import { REQUEST_POSTS, RECEIVE_POSTS } from "./index";
 
 export function fetchPosts(subreddit) {
 
