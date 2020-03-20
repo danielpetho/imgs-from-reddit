@@ -17,22 +17,40 @@ export function fetchReducer(state = {
             });
         case RECEIVE_POSTS:
             let posts = action.posts;
+            console.log(posts);
             posts = posts.filter(e => {
                 const post_hint = "" + e.post_hint;
-                return post_hint.includes("image") || post_hint.includes("video");
+                console.log(post_hint);
+                return post_hint.includes("image"); // || post_hint.includes("video");
             });
 
             let filteredPosts = [];
-            posts.forEach(e => { 
+            posts.forEach(e => {
+                let url, mediaType;
+                if (e.post_hint.includes("image")) { 
+                    url = e.url;
+                    mediaType = "img";
+                } 
+                /*if (e.post_hint.includes("hosted:video")) {
+                    url = e.media.reddit_video.fallback_url;
+                    mediaType = "video";
+                } 
+                if (e.post_hint.includes("rich:video")) {
+                    url = e.url;
+                    mediaType = "video";
+                }*/
                 let newPost = {
-                    url: e.url,
+                    url: url,
                     likes: e.score,
                     permalink: "https://www.reddit.com" + e.permalink,
                     subreddit: e.subreddit,
-                    created: e.created
+                    created: e.created,
+                    mediaType: mediaType
                 };
                 filteredPosts.push(newPost);
             })
+
+            //console.log(filteredPosts);
             
             return Object.assign({}, state, {
                 isFetching: false,

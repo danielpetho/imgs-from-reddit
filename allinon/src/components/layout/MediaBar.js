@@ -7,10 +7,10 @@ const MediaBar = (props) => {
     const { filteredPosts } = props;
     let image3 = "https://i.redd.it/88nc60brsfn41.jpg"
     let mediaList = []
-    if (filteredPosts.length != 0) {
+    if (filteredPosts.length !== 0) {
         mediaList = filteredPosts.map(e => {
             return (
-               <Photo key={e.url} id={e.created} src={e.url}/>
+               <Photo key={e.url} id={e.created} src={e.url} mediaType={e.mediaType}/>
             )
         })
     } else {
