@@ -21,7 +21,7 @@ export function fetchReducer(state = {
             posts = posts.filter(e => {
                 const post_hint = "" + e.post_hint;
                 console.log(post_hint);
-                return post_hint.includes("image"); // || post_hint.includes("video");
+                return post_hint.includes("image") || post_hint.includes("hosted:video");
             });
 
             let filteredPosts = [];
@@ -31,11 +31,11 @@ export function fetchReducer(state = {
                     url = e.url;
                     mediaType = "img";
                 } 
-                /*if (e.post_hint.includes("hosted:video")) {
+                if (e.post_hint.includes("hosted:video")) {
                     url = e.media.reddit_video.fallback_url;
                     mediaType = "video";
                 } 
-                if (e.post_hint.includes("rich:video")) {
+                /*if (e.post_hint.includes("rich:video")) {
                     url = e.url;
                     mediaType = "video";
                 }*/

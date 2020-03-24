@@ -6,7 +6,7 @@ export function fetchPosts(subreddit) {
 
         dispatch(requestPosts(subreddit));
 
-        return fetch(`https://www.reddit.com/r/${subreddit}.json`)
+        return fetch(`https://www.reddit.com/r/${subreddit}.json?sort=top&limit=100&t=all&restrict_sr=0`)
             .then(
                 response =>
                     response.json(),

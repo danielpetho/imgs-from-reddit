@@ -10,8 +10,7 @@ const Photo = (props) => {
         ) : (
             <div className="photocontainer">
             <Link to="/teszt">
-                <video className="photo" alt="video" autoplay>
-                    <source src={src}></source>
+                <video className="photo" alt="video" autoPlay loop src={src}>
                 </video>
             </Link>
         </div>
