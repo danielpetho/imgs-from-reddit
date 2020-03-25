@@ -1,12 +1,12 @@
 import { REQUEST_POSTS, RECEIVE_POSTS } from "./index";
 
-export function fetchPosts(subreddit) {
+export function fetchPosts(subreddit, sort) {
 
     return function (dispatch) {
 
         dispatch(requestPosts(subreddit));
 
-        return fetch(`https://www.reddit.com/r/${subreddit}.json?sort=top&limit=100&t=all&restrict_sr=0`)
+        return fetch(`https://www.reddit.com/r/${subreddit}.json?sort=${sort}&limit=50`)
             .then(
                 response =>
                     response.json(),

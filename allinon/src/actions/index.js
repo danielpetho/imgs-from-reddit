@@ -3,7 +3,10 @@ export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 
+export const EMPTY_POSTS = 'EMPTY_POSTS';
 export const EMPTY_TAGS = 'EMPTY_TAGS';
+export const FILTER_TAG = 'FILTER_TAG'
+export const SORT_POSTS = 'SORT_POSTS'
 
 export const TOGGLE_VIDEOS = 'TOGGLE_VIDEOS';
 export const TOGGLE_PICTURES = 'TOGGLE_PICTURES';

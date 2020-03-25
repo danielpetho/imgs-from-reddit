@@ -1,4 +1,5 @@
 import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT } from './index';
+import { sortPosts } from './filter';
 
 function toggleView(view) {
     return {
@@ -49,7 +50,9 @@ export function toggleSettings(setting, flag) {
                 dispatch(toggleVideos(flag));
                 break;
             case "sortposts":
+                console.log(flag);
                 dispatch(toggleSort(flag));
+                dispatch(sortPosts(flag));
                 break;
             case "gridview":
                 dispatch(toggleView(flag));

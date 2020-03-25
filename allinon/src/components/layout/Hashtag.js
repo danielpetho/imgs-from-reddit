@@ -5,7 +5,7 @@ const Hashtag = (props) => {
     return (
         <div className="hashtag">
             <span>{tag}</span>
-            <span className="hashtag-x" onClick={() => onDelete(id)}><i className="material-icons md-18">close</i></span>
+            <span className="hashtag-x" onClick={() => onDelete(id, tag)}><i className="material-icons md-18">close</i></span>
         </div>
     );
 };

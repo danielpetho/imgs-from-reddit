@@ -3,7 +3,7 @@ import MediaBar from "../components/layout/MediaBar";
 
 function mapStateToProps(state) {
     return {
-        filteredPosts: state.fetchState.items
+        filteredPosts: state.postsState.items
     };
 }
 

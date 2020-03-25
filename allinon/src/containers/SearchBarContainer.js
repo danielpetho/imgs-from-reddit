@@ -4,7 +4,7 @@ import {processQuery} from "../actions/searchbar";
 
 function mapStateToProps(state, props) {
     return {
-
+        settings: state.settingsState
     };
 }
 

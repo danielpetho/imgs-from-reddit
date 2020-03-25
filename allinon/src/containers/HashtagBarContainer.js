@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HashtagBar from "../components/layout/HashtagBar";
-import {deleteHashtag} from "../actions/searchbar"
+import {filterPosts} from "../actions/searchbar"
 
 function mapStateToProps(state) {
     return {
@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        onDelete: (e) => dispatch(deleteHashtag(e))
+        onDelete: (id, tag) => dispatch(filterPosts(id, tag))
     };
 }
 

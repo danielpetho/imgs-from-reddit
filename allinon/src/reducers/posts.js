@@ -1,6 +1,6 @@
-import {INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS} from '../actions/index'
+import {INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, EMPTY_POSTS, FILTER_TAG, SORT_POSTS} from '../actions/index'
 
-export function fetchReducer(state = {
+export function postsReducer(state = {
     items: [],
     isFetching: false,
     didInvalidate: false,
@@ -10,6 +10,23 @@ export function fetchReducer(state = {
             return Object.assign({}, state, {
                 didInvalidate: true
             });
+        case FILTER_TAG:
+            let filterPosts = state.items.filter(e => e.subreddit !== action.tag);
+            return Object.assign({}, state, {
+                items: filterPosts
+            })
+        case SORT_POSTS:
+            console.log(state.items);
+            let sortedPosts = state.items;
+            sortedPosts = action.flag === "new" ? [...sortedPosts].sort((a,b) => a.created < b.created) : [...sortedPosts].sort((a, b) => a.likes < b.likes);
+            console.log(sortedPosts);
+            return Object.assign({}, state, {
+                items: sortedPosts
+            })
+        case EMPTY_POSTS:
+            return Object.assign({}, state, {
+                items: []
+            })
         case REQUEST_POSTS:
             return Object.assign({}, state, {
                 isFetching: true,
@@ -17,11 +34,9 @@ export function fetchReducer(state = {
             });
         case RECEIVE_POSTS:
             let posts = action.posts;
-            console.log(posts);
             posts = posts.filter(e => {
                 const post_hint = "" + e.post_hint;
-                console.log(post_hint);
-                return post_hint.includes("image") || post_hint.includes("hosted:video");
+                return post_hint.includes("image") // || post_hint.includes("hosted:video");
             });
 
             let filteredPosts = [];
@@ -35,10 +50,10 @@ export function fetchReducer(state = {
                     url = e.media.reddit_video.fallback_url;
                     mediaType = "video";
                 } 
-                /*if (e.post_hint.includes("rich:video")) {
+                if (e.post_hint.includes("rich:video")) {
                     url = e.url;
                     mediaType = "video";
-                }*/
+                }
                 let newPost = {
                     url: url,
                     likes: e.score,
@@ -50,8 +65,8 @@ export function fetchReducer(state = {
                 filteredPosts.push(newPost);
             })
 
-            //console.log(filteredPosts);
-            
+            filteredPosts = filteredPosts.concat(state.items)//.sort((a, b) => a.created - b.created);
+
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
