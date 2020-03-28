@@ -35,14 +35,15 @@ export function filterPosts(tagid,tag) {
     }
 }
 
-export function processQuery(tags, sort) {
-    const searchtags = tags.searchValues.split(" ");
+export function processQuery(tags) {
+    let searchtags = tags.searchValues.split(" ");
+    //searchtags = searchtags.filter(e => e === " ");
     return (dispatch) => {
         dispatch(emptyTags());
         dispatch(emptyPosts());
         searchtags.forEach(tag => {
             dispatch(addHashtag(tag));
-            dispatch(fetchPosts(tag, sort));
+            dispatch(fetchPosts(tag, "new"));
         }) 
     }
 }

@@ -1,7 +1,7 @@
-export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+export const LOG_FETCH = 'LOG_FETCH';
 
 export const EMPTY_POSTS = 'EMPTY_POSTS';
 export const EMPTY_TAGS = 'EMPTY_TAGS';

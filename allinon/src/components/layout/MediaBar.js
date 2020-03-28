@@ -1,22 +1,39 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Photo from '../images/Photo';
 import image1 from '../../pic.jpg';
 import image2 from '../../laci.jpg';
 
 const MediaBar = (props) => {
-    const { filteredPosts } = props;
-    let image3 = "https://i.redd.it/88nc60brsfn41.jpg"
+    const { filteredPosts, isFetching, fetchMore, fetchLogs} = props;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+            console.log("fetching more");
+            fetchLogs.forEach(e => {
+                console.log(e);
+                fetchMore(e.subreddit, "new", e.after);
+            })
+          }
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, [fetchLogs, fetchMore, props]);
+
+
     let mediaList = []
     if (filteredPosts.length !== 0) {
-        mediaList = filteredPosts.map(e => {
+        
+        mediaList = filteredPosts.map((e, index) => {
             return (
-               <Photo key={e.url} id={e.created} src={e.url} mediaType={e.mediaType}/>
+               <Photo key={index} id={e.created} src={e.url} mediaType={e.mediaType} alt={e.subreddit}/>
             )
         })
     } else {
-        mediaList = [image1, image2, image3].map(e => {
+        mediaList = [image1, image2].map((e, index) => {
+        
             return (
-               <Photo src={e} key={e}/>
+               <Photo src={e} key={index}/>
             )
             })
     }
@@ -25,7 +42,9 @@ const MediaBar = (props) => {
     return (
         <div className="photoview">
             {mediaList}
+            {isFetching && <div className="Loading more">Loading...</div>}
         </div>
+        
     );
 };
 

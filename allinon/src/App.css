@@ -77,7 +77,6 @@ i {
   text-decoration: underline;
   text-decoration-thickness: 0.2em;
   text-underline-offset: 0.3em;
-
 }
 
 .off {
@@ -85,7 +84,6 @@ i {
 }
 
 .hashtag-bar {
-
   background-color: #F1F1F1;
   display: flex;
   justify-content: flex-start;
@@ -223,6 +221,10 @@ i {
 }
 
 @media screen and (max-width:850px) {
+  * {
+    background-color: #F1F1F1;
+
+  }
    .hashtag-bar {
      display: none;
    }
@@ -235,12 +237,16 @@ i {
     width: 50%;
     height: 20em;
     justify-content: center;
+    background-color: #fefefe;
+
   }
   .photo {
     width: 100%;
     height: 20em;
     overflow: hidden;
     object-fit: cover;
+    background-color: #fefefe;
+
   } 
 
   .avatar {
@@ -250,20 +256,25 @@ i {
   .search-mobile {
     display: flex;
     padding-left: 4em;
-
   }
 
   .menu-mobile {
     display: flex;
     padding-right: 4em;
+    background-color: #F1F1F1;
+  }
 
+  .photoview {
+    background-color: #fefefe;
   }
 
   .navbar {
-    min-height: 1em;
+    background-color: #F1F1F1;
+    min-height: 2em;
     margin: 0.6em 0 0.6em 0;
     padding: 0 1.6em 0 1.6em;
   }
+
 
 }
 
@@ -296,7 +307,6 @@ i {
   .menu-mobile {
     display: flex;
     padding-right: 0;
-
   }
 } 
 

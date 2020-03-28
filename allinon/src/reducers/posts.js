@@ -1,9 +1,10 @@
-import {INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, EMPTY_POSTS, FILTER_TAG, SORT_POSTS} from '../actions/index'
+import {INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, EMPTY_POSTS, FILTER_TAG, SORT_POSTS, LOG_FETCH} from '../actions/index'
 
 export function postsReducer(state = {
     items: [],
     isFetching: false,
     didInvalidate: false,
+    fetchLogs: []
 }, action) {
     switch (action.type) {
         case INVALIDATE_SUBREDDIT:
@@ -16,10 +17,8 @@ export function postsReducer(state = {
                 items: filterPosts
             })
         case SORT_POSTS:
-            console.log(state.items);
             let sortedPosts = state.items;
             sortedPosts = action.flag === "new" ? [...sortedPosts].sort((a,b) => a.created < b.created) : [...sortedPosts].sort((a, b) => a.likes < b.likes);
-            console.log(sortedPosts);
             return Object.assign({}, state, {
                 items: sortedPosts
             })
@@ -32,8 +31,37 @@ export function postsReducer(state = {
                 isFetching: true,
                 didInvalidate: false
             });
+        case LOG_FETCH:
+            /*
+             * saving how many elements was fetched for a subbredit. 
+             * This data is used when the user wants to load more posts from the same subreddits.
+             */
+            const fetchLog = {
+                subreddit: action.subreddit,
+                before: action.before,
+                after: action.after,
+                receivedAt: action.receivedAt,
+                count: action.count + 100
+            }
+
+            /*console.log(state);
+            console.log(action);*/
+            let flogs = state.fetchLogs;
+            flogs = flogs.filter(e => {
+                return e.subreddit === fetchLog;
+            })
+            flogs.push(fetchLog);
+            return Object.assign({}, state, {
+                lastUpdated: action.receivedAt,
+                fetchLogs: flogs,
+                isFetching: false
+            })
         case RECEIVE_POSTS:
+            /*
+             * filter out posts except pictures (TODO: videos too)
+             */
             let posts = action.posts;
+            console.log(posts.length)
             posts = posts.filter(e => {
                 const post_hint = "" + e.post_hint;
                 return post_hint.includes("image") // || post_hint.includes("hosted:video");
@@ -54,6 +82,10 @@ export function postsReducer(state = {
                     url = e.url;
                     mediaType = "video";
                 }
+
+                /*
+                 * create a new post
+                 */
                 let newPost = {
                     url: url,
                     likes: e.score,
@@ -65,13 +97,13 @@ export function postsReducer(state = {
                 filteredPosts.push(newPost);
             })
 
+            
+            console.log(filteredPosts.length);
             filteredPosts = filteredPosts.concat(state.items)//.sort((a, b) => a.created - b.created);
-
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                items: filteredPosts,
-                lastUpdated: action.receivedAt,
+                items: filteredPosts
             });
         default:
             return state;

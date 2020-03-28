@@ -50,7 +50,6 @@ export function toggleSettings(setting, flag) {
                 dispatch(toggleVideos(flag));
                 break;
             case "sortposts":
-                console.log(flag);
                 dispatch(toggleSort(flag));
                 dispatch(sortPosts(flag));
                 break;
