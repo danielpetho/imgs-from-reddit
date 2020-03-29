@@ -9,8 +9,11 @@ export function fetchPosts(subreddit, sort, after) {
         let afterStr = "";
         if (after === undefined) afterStr = "";
         else afterStr = "&after=" + after; 
+
+        const fetchURL = `https://www.reddit.com/r/${subreddit}.json?sort=${sort}&limit=4` + afterStr;
+        //console.log(fetchURL);
         
-        return fetch(`https://www.reddit.com/r/${subreddit}.json?sort=${sort}&limit=100` + afterStr)
+        return fetch(fetchURL)
             .then(
                 response =>
                     response.json(),
@@ -19,9 +22,7 @@ export function fetchPosts(subreddit, sort, after) {
             .then(json => {
                 dispatch(receivePosts(subreddit, json));
                 dispatch(logFetch(subreddit, json));
-            }
-                
-            )
+            })
     }
 }
 

@@ -44,8 +44,6 @@ export function postsReducer(state = {
                 count: action.count + 100
             }
 
-            /*console.log(state);
-            console.log(action);*/
             let flogs = state.fetchLogs;
             flogs = flogs.filter(e => {
                 return e.subreddit === fetchLog;
@@ -61,7 +59,6 @@ export function postsReducer(state = {
              * filter out posts except pictures (TODO: videos too)
              */
             let posts = action.posts;
-            console.log(posts.length)
             posts = posts.filter(e => {
                 const post_hint = "" + e.post_hint;
                 return post_hint.includes("image") // || post_hint.includes("hosted:video");
@@ -97,9 +94,8 @@ export function postsReducer(state = {
                 filteredPosts.push(newPost);
             })
 
+            filteredPosts = filteredPosts.concat(...state.items)//.sort((a, b) => a.created - b.created);
             
-            console.log(filteredPosts.length);
-            filteredPosts = filteredPosts.concat(state.items)//.sort((a, b) => a.created - b.created);
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,

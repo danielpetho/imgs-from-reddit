@@ -11,17 +11,18 @@ const MediaBar = (props) => {
             if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
             console.log("fetching more");
             fetchLogs.forEach(e => {
-                console.log(e);
                 fetchMore(e.subreddit, "new", e.after);
             })
           }
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-      }, [fetchLogs, fetchMore, props]);
+      }, [fetchLogs, fetchMore, props, isFetching]);
 
 
     let mediaList = []
+    console.log("all posts length:")
+    console.log(filteredPosts.length)
     if (filteredPosts.length !== 0) {
         
         mediaList = filteredPosts.map((e, index) => {
