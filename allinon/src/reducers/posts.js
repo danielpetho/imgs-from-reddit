@@ -94,12 +94,13 @@ export function postsReducer(state = {
                 filteredPosts.push(newPost);
             })
 
-            filteredPosts = filteredPosts.concat(...state.items)//.sort((a, b) => a.created - b.created);
+            let newItems = state.items;
+            newItems = newItems.concat(...filteredPosts)//.sort((a, b) => a.created - b.created);
             
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                items: filteredPosts
+                items: newItems
             });
         default:
             return state;
