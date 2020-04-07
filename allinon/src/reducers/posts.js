@@ -13,8 +13,10 @@ export function postsReducer(state = {
             });
         case FILTER_TAG:
             let filterPosts = state.items.filter(e => e.subreddit !== action.tag);
+            let newFlogs = state.fetchLogs.filter(e => e.subreddit !== action.tag);
             return Object.assign({}, state, {
-                items: filterPosts
+                items: filterPosts,
+                fetchLogs: newFlogs
             })
         case SORT_POSTS:
             let sortedPosts = state.items;

@@ -10,7 +10,7 @@ export function fetchPosts(subreddit, sort, after) {
         if (after === undefined) afterStr = "";
         else afterStr = "&after=" + after; 
 
-        const fetchURL = `https://www.reddit.com/r/${subreddit}.json?sort=${sort}&limit=4` + afterStr;
+        const fetchURL = `https://www.reddit.com/r/${subreddit}.json?sort=${sort}&limit=25` + afterStr;
         //console.log(fetchURL);
         
         return fetch(fetchURL)
