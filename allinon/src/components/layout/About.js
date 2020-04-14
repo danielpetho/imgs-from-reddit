@@ -5,7 +5,7 @@ const About = () => {
     return (
         <div>
             <Navbar />
-            <p>Itt lesz av about oldal</p>
+            <p>Itt lesz az about oldal</p>
         </div>
     )
 }

@@ -1,28 +1,25 @@
 import React, {useEffect} from 'react';
 import Photo from '../images/Photo';
-import image1 from '../../pic.jpg';
-import image2 from '../../laci.jpg';
 
 const MediaBar = (props) => {
-    const { filteredPosts, isFetching, fetchMore, fetchLogs} = props;
+    const { fetchBy, filteredPosts, isFetching, fetchMore, fetchLogs} = props;
 
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
             console.log("fetching more");
             fetchLogs.forEach(e => {
-                fetchMore(e.subreddit, "new", e.after);
+                fetchMore(e.subreddit, fetchBy, e.after);
             })
           }
 
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-      }, [fetchLogs, fetchMore, props, isFetching]);
+      }, [fetchBy, fetchLogs, fetchMore, props, isFetching]);
 
 
     let mediaList = []
-    console.log("all posts length:")
-    console.log(filteredPosts.length)
+
     if (filteredPosts.length !== 0) {
         
         mediaList = filteredPosts.map((e, index) => {
@@ -31,12 +28,7 @@ const MediaBar = (props) => {
             )
         })
     } else {
-        mediaList = [image1, image2].map((e, index) => {
-        
-            return (
-               <Photo src={e} key={index}/>
-            )
-            })
+    
     }
     
 

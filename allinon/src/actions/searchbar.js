@@ -36,8 +36,9 @@ export function filterPosts(tagid,tag) {
 }
 
 export function processQuery(tags) {
+    console.log(tags)
     let searchtags = tags.searchValues.split(" ");
-    //searchtags = searchtags.filter(e => e === " ");
+    searchtags = searchtags.filter(e => e !== "");
     return (dispatch) => {
         dispatch(emptyTags());
         dispatch(emptyPosts());

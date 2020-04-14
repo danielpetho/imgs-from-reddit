@@ -6,7 +6,8 @@ function mapStateToProps(state) {
     return {
         filteredPosts: state.postsState.items,
         isFetching: state.postsState.isFetching,
-        fetchLogs: state.postsState.fetchLogs
+        fetchLogs: state.postsState.fetchLogs,
+        fetchBy: state.settingsState.sortposts
     };
 }
 

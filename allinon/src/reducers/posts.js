@@ -12,9 +12,12 @@ export function postsReducer(state = {
                 didInvalidate: true
             });
         case FILTER_TAG:
-            let filterPosts = state.items.filter(e => e.subreddit !== action.tag);
+            let tag = action.tag.slice(2)
+            let filterPosts = state.items.filter(e => e.subreddit !== tag);
+            let filterFlogs = state.fetchLogs.filter(e => e.subreddit !== tag);
             return Object.assign({}, state, {
-                items: filterPosts
+                items: filterPosts,
+                fetchLogs: filterFlogs
             })
         case SORT_POSTS:
             let sortedPosts = state.items;
@@ -41,7 +44,6 @@ export function postsReducer(state = {
                 before: action.before,
                 after: action.after,
                 receivedAt: action.receivedAt,
-                count: action.count + 100
             }
 
             let flogs = state.fetchLogs;
@@ -61,7 +63,7 @@ export function postsReducer(state = {
             let posts = action.posts;
             posts = posts.filter(e => {
                 const post_hint = "" + e.post_hint;
-                return post_hint.includes("image") // || post_hint.includes("hosted:video");
+                return post_hint.includes("image") // || post_hint.includes("svideo");
             });
 
             let filteredPosts = [];

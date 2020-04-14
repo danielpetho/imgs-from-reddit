@@ -11,7 +11,7 @@ function App() {
     <HashRouter>
       <div className="App">
         <div className="sticky-header">
-          <Navbar />
+          <Navbar /> 
           <SettingsBarContainer />
           <HashtagBarContainer />
         </div>

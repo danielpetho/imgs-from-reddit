@@ -14,7 +14,7 @@ export function searchReducer(state = {
             });
         case ADD_HASHTAG:
             let newHashtags = state.hashtags;
-            const obj = {id: ++tagId, tag: action.hashtag}
+            const obj = {id: ++tagId, tag: "r/"+action.hashtag}
             newHashtags.push(obj);
             return Object.assign({}, state, {
                 hashtags: newHashtags

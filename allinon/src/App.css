@@ -1,7 +1,7 @@
 .navbar {
   display: flex;
   min-height: 1em;
-  margin: 1.2em 0 0.6em 0;
+  margin: 0.6em 0 0em 0;
   padding: 0 4em 0 4em;
   align-items: center;
   justify-content: space-between;
@@ -19,10 +19,14 @@
   border-style: solid;
 }
 
+.logo {
+  width: 4em
+} 
+
 .settings-bar {
   font-size: 1em;
   font-weight: 500;
-  margin: 1.2em 0 0.6em 0;
+  margin: 0.6em 0 0.8em 0;
   padding: 0 4em 0 4em;
   display: flex;
   align-items: center;
@@ -33,14 +37,14 @@
   display: flex;
   flex-grow: 1;
   align-items: center;;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .searchview {
   flex-grow: 1;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .settings-bar li {
@@ -61,6 +65,7 @@
 
 .searchview li {
   padding-left: 1em;
+  color: black;
 }
 
 i {

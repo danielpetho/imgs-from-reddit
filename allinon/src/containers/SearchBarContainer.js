@@ -4,14 +4,14 @@ import {processQuery} from "../actions/searchbar";
 
 function mapStateToProps(state, props) {
     return {
-        settings: state.settingsState
+        fetchBy: state.settingsState.sortposts
     };
 }
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        onSearch: (searchValues) => {
-            dispatch(processQuery(searchValues));
+        onSearch: (props, searchValues) => {
+            dispatch(processQuery(props, searchValues));
         }
     };
 }
