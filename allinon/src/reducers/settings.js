@@ -4,9 +4,8 @@ export function settingsReducer(state = {
     autoplay: true,
     videos: true,
     pictures: true,
-    gridview: 'big',
+    gridview: 'grid',
     sortposts: 'new',
-    viewport: 'desktop'
 }, action) {
     switch (action.type) {
         case TOGGLE_AUTOPLAY:
@@ -39,7 +38,6 @@ export function settingsReducer(state = {
                 });
             };
             return state;
-
         default:
             return state;
     }

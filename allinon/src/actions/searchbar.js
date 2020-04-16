@@ -44,7 +44,7 @@ export function processQuery(tags) {
         dispatch(emptyPosts());
         searchtags.forEach(tag => {
             dispatch(addHashtag(tag));
-            dispatch(fetchPosts(tag, "new"));
+            dispatch(fetchPosts(tag, "top"));
         }) 
     }
 }

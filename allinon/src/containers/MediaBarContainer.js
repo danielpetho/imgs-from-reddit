@@ -7,7 +7,7 @@ function mapStateToProps(state) {
         filteredPosts: state.postsState.items,
         isFetching: state.postsState.isFetching,
         fetchLogs: state.postsState.fetchLogs,
-        fetchBy: state.settingsState.sortposts
+        settings: state.settingsState
     };
 }
 
