@@ -1,17 +1,17 @@
-import { ADD_HASHTAG, DELETE_HASHTAG, EMPTY_POSTS, EMPTY_TAGS } from './index';
+import { ADD_SUBREDDIT, DELETE_SUBREDDIT, EMPTY_POSTS, EMPTY_TAGS } from './index';
 import { fetchPosts } from './fetch';
 import { filterTag } from './filter';
 
 function addHashtag(hashtag) {
     return {
-        type: ADD_HASHTAG,
+        type: ADD_SUBREDDIT,
         hashtag
     };
 }
 
 function deleteHashtag(tagid) {
     return {
-        type: DELETE_HASHTAG,
+        type: DELETE_SUBREDDIT,
         tagid
     };
 }

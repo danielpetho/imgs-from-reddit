@@ -11,7 +11,7 @@ const SettingsBar = (props) => {
                 <ul>
                 <li onClick={() => onToggle("sortposts", "top")} className={settings['sortposts'] === "top" ? "on" : "off"}>top</li>
                     <li onClick={() => onToggle("sortposts", "new")} className={settings['sortposts'] === "new" ? "on" : "off"}>new</li>
-                    <Link to="/about"><li>about</li></Link>
+                    {/*<Link to="/about"><li>about</li></Link>*/}
                 </ul>
             </div >
             <div className="settings">

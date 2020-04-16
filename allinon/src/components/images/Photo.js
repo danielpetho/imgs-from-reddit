@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Photo = (props) => {
     const {mediaType, src, alt} = props;
     let component = mediaType === "img" ? (
-        <div className="photocontainer">
+        <div className="photocontainer ">
             <Link to="/teszt"><img src={src} className="photo" alt={alt}></img></Link>
         </div>
         ) : (

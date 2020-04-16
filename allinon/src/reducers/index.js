@@ -15,3 +15,5 @@ export const store = createStore(combineReducers({
     composeWithDevTools(
         applyMiddleware(thunkMiddleware)
     ));
+
+

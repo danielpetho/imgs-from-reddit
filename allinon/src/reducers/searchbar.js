@@ -1,4 +1,4 @@
-import {EMPTY_TAGS, ADD_HASHTAG, DELETE_HASHTAG } from '../actions/index';
+import {EMPTY_TAGS, ADD_SUBREDDIT, DELETE_SUBREDDIT } from '../actions/index';
 
 let tagId = 2;
 
@@ -12,14 +12,14 @@ export function searchReducer(state = {
             return Object.assign({}, state, {
                 hashtags: []
             });
-        case ADD_HASHTAG:
+        case ADD_SUBREDDIT:
             let newHashtags = state.hashtags;
             const obj = {id: ++tagId, tag: "r/"+action.hashtag}
             newHashtags.push(obj);
             return Object.assign({}, state, {
                 hashtags: newHashtags
             });
-        case DELETE_HASHTAG:
+        case DELETE_SUBREDDIT:
             let newTags = state.hashtags;
             newTags = newTags.filter(e => e.id !== action.tagid);
             return Object.assign({}, state, {

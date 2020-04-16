@@ -1,4 +1,4 @@
-import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT } from './index';
+import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT} from './index';
 import { sortPosts } from './filter';
 
 function toggleView(view) {

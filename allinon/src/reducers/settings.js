@@ -5,7 +5,8 @@ export function settingsReducer(state = {
     videos: true,
     pictures: true,
     gridview: 'big',
-    sortposts: 'new'
+    sortposts: 'new',
+    viewport: 'desktop'
 }, action) {
     switch (action.type) {
         case TOGGLE_AUTOPLAY:
