@@ -1,4 +1,4 @@
-import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT} from './index';
+import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT, MOBILE_SEARCH, MOBILE_SETTINGS} from './index';
 import { sortPosts } from './filter';
 
 function toggleView(view) {
@@ -34,6 +34,19 @@ function toggleAutoplay(autoplay) {
         type: TOGGLE_AUTOPLAY,
         autoplay
     };
+}
+
+export function openMobileSearch() {
+    return {
+        type: MOBILE_SEARCH
+    }
+    
+}
+
+export function openMobileSettings() {
+    return {
+        type: MOBILE_SETTINGS
+    }
 }
 
 

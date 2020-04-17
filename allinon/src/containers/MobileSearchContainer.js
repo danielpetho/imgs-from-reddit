@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import MobileSearch from "../components/layout/MobileSearch";
-import { toggleSettings } from "../actions/settings";
+import { toggleSettings, openMobileSearch, openMobileSettings } from "../actions/settings";
 import { filterPosts } from "../actions/searchbar";
 
 function mapStateToProps(state) {
@@ -14,9 +14,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch, props) {
     return {
         onToggle: (type, flag) => dispatch(toggleSettings(type, flag)),
-        onDelete: (id, tag) => dispatch(filterPosts(id, tag))
-
-
+        onDelete: (id, tag) => dispatch(filterPosts(id, tag)),
+    
     };
 }
 

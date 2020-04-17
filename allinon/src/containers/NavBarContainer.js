@@ -1,21 +1,23 @@
 import { connect } from "react-redux";
-import SearchBar from "../components/layout/SearchBar";
+import { openMobileSearch, openMobileSettings } from "../actions/settings";
+import Navbar from "../components/layout/Navbar";
 
 function mapStateToProps(state, props) {
     return {
-
+        menus: state.settingsState
     };
 }
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        
+        openMobileSearch: () => dispatch(openMobileSearch()),
+        openMobileSettings: () => dispatch(openMobileSettings())
     };
 }
 
-const SearchBarContainer = connect(
+const NavBarContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(SearchBar);
+)(Navbar);
 
-export default SearchBarContainer;
+export default NavBarContainer;
