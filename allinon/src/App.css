@@ -235,6 +235,14 @@ i {
   background-color:  #0e1e11;
 }
 
+.mobile-settings {
+  display: none;
+}
+
+.mobile-settings-active {
+  display: none;
+}
+
 .material-icons.md-18 { font-size: 0.8em; }
 .material-icons.md-24 { font-size: 1.2em; }
 .material-icons.md-36 { font-size: 1.6em; }
@@ -274,13 +282,7 @@ i {
     display: none;
   }
 
-  .mobile-settings {
-    display: none;
-  }
-
-  .mobile-settings-active {
-    display: none;
-  }
+  
 }
 
 @media screen and (max-width:850px) {
