@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Photo = (props) => {
-    const {mediaType, src, alt, gv} = props;
+    const {mediaType, src, alt, gv, link} = props;
     const gridview_container = gv === "grid" ? "photocontainer-grid" : "photocontainer-big"
     const gridview_photo = gv === "grid" ? "photo-grid" : "photo-big"
     const component = mediaType === "img" ? (
         <div className={gridview_container}>
-            <Link to="/teszt"><img src={src} className={gridview_photo} alt={alt}></img></Link>
+            <a href={link} ><img  src={src} className={gridview_photo} alt={alt}></img>  </a>
+            <div className="overlay">
+                <div className="text">{"r/"+alt}</div>
+            </div>
         </div>
         ) : (
             <div className={gridview_container}>

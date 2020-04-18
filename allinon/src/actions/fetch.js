@@ -8,7 +8,6 @@ export function fetchPosts(subreddit, sort, after) {
         dispatch(requestPosts(subreddit));
 
         let afterStr = "";
-        let sortStr = "";
         if (after === undefined) afterStr = "";
         else afterStr = "&after=" + after; 
 

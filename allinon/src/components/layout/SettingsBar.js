@@ -9,8 +9,8 @@ const SettingsBar = (props) => {
              <div className="searchview">
                 <SearchBarContainer submit={handleSubmit} settings={settings}/>
                 <ul>
-                <li onClick={() => onToggle("sortposts", "top")} className={settings['sortposts'] === "top" ? "on" : "off"}>top</li>
-                    <li onClick={() => onToggle("sortposts", "new")} className={settings['sortposts'] === "new" ? "on" : "off"}>new</li>
+                <li onClick={() => onToggle("sortposts", "top")}><span className={settings['sortposts'] === "top" ? "on" : "off"}>top </span></li>
+                    <li onClick={() => onToggle("sortposts", "new")}><span className={settings['sortposts'] === "new" ? "on" : "off"}>new</span></li>
                     {/*<Link to="/about"><li>about</li></Link>*/}
                 </ul>
             </div >
