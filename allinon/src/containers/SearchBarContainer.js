@@ -10,8 +10,8 @@ function mapStateToProps(state, props) {
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        onSearch: (props, searchValues) => {
-            dispatch(processQuery(props, searchValues));
+        onSearch: (searchValues) => {
+            dispatch(processQuery(searchValues));
         }
     };
 }

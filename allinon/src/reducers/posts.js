@@ -1,9 +1,11 @@
-import {INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, EMPTY_POSTS, FILTER_TAG, SORT_POSTS, LOG_FETCH} from '../actions/index'
+import {NOT_FETCH, INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, EMPTY_POSTS, FILTER_TAG, SORT_POSTS, LOG_FETCH, INC_FETCH_COUNTER} from '../actions/index'
 
 export function postsReducer(state = {
     items: [],
     isFetching: false,
     didInvalidate: false,
+    fetchingCounter: 0,
+    notexistingsubs: [],
     fetchLogs: []
 }, action) {
     switch (action.type) {
@@ -34,6 +36,19 @@ export function postsReducer(state = {
                 isFetching: true,
                 didInvalidate: false
             });
+
+        case NOT_FETCH:
+            let newnotexistingsubs = state.notexistingsubs;
+            newnotexistingsubs.push(action.subreddit);
+            return Object.assign({}, state, {
+                isFetching: false,
+                notexistingsubs: newnotexistingsubs,
+                fetchingCounter: state.fetchingCounter--
+            })
+        case INC_FETCH_COUNTER:
+            return Object.assign({}, state, {
+                fetchingCounter: state.fetchingCounter++
+            })
         case LOG_FETCH:
             /*
              * saving how many elements was fetched for a subbredit. 
@@ -102,7 +117,8 @@ export function postsReducer(state = {
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                items: newItems
+                items: newItems,
+                fetchingCounter: state.fetchingCounter--
             });
         default:
             return state;

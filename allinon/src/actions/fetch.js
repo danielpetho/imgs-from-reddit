@@ -1,27 +1,48 @@
-import { REQUEST_POSTS, RECEIVE_POSTS, LOG_FETCH } from "./index";
+import { REQUEST_POSTS, RECEIVE_POSTS, LOG_FETCH, NOT_FETCH } from "./index";
+import { deleteHashtag } from "./searchbar";
 
 export function fetchPosts(subreddit, sort, after) {
 
     return function (dispatch) {
-
+        console.log(sort)
         dispatch(requestPosts(subreddit));
 
         let afterStr = "";
+        let sortStr = "";
         if (after === undefined) afterStr = "";
         else afterStr = "&after=" + after; 
 
-        const fetchURL = `https://www.reddit.com/r/${subreddit}.json?sort=${sort}&limit=50` + afterStr;
+        if (sort === "top") sort = "/top";
+        else sort = "/new"
+
+        const fetchURL = `https://www.reddit.com/r/${subreddit}${sort}.json?&limit=50` + afterStr;
         
         return fetch(fetchURL)
             .then(
                 response =>
                     response.json(),
-                error => console.log('An error occurred...', error)
+                error => {
+                    dispatch(deleteHashtag("r/"+subreddit));
+                }
+
             )
             .then(json => {
-                dispatch(receivePosts(subreddit, json));
-                dispatch(logFetch(subreddit, json));
+                if(json) {
+                    dispatch(receivePosts(subreddit, json));
+                    dispatch(logFetch(subreddit, json));
+                } else {
+                    dispatch(notFetch(subreddit))
+                    console.log("looks like there's no such subreddit as " + subreddit)
+                }
+                
             })
+    }
+}
+
+export function notFetch(subreddit) {
+    return {
+        type: NOT_FETCH,
+        subreddit
     }
 }
 

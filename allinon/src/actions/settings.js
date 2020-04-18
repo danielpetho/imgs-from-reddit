@@ -64,7 +64,7 @@ export function toggleSettings(setting, flag) {
                 break;
             case "sortposts":
                 dispatch(toggleSort(flag));
-                dispatch(sortPosts(flag));
+                //dispatch(sortPosts(flag));
                 break;
             case "gridview":
                 dispatch(toggleView(flag));

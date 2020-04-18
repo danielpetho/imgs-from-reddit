@@ -20,6 +20,7 @@ export function settingsReducer(state = {
             });
 
         case TOGGLE_SORT:
+
             return Object.assign({}, state, {
                 sortposts: action.sortposts
             });

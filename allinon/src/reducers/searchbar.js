@@ -20,8 +20,11 @@ export function searchReducer(state = {
                 hashtags: newHashtags
             });
         case DELETE_SUBREDDIT:
+            let tag = action.tagid.slice(0);
+            console.log(tag)
+            console.log(state.hashtags)
             let newTags = state.hashtags;
-            newTags = newTags.filter(e => e.id !== action.tagid);
+            newTags = newTags.filter(e => e.tag !== tag);
             return Object.assign({}, state, {
                 hashtags: newTags
             });

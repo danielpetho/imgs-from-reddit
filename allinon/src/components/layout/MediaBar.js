@@ -25,7 +25,7 @@ const MediaBar = (props) => {
         
         mediaList = filteredPosts.map((e, index) => {
             return (
-               <Photo key={index} id={e.created} src={e.url} mediaType={e.mediaType} alt={e.subreddit} gv={gridview}/>
+               <Photo key={index} id={e.created} link={e} src={e.url} mediaType={e.mediaType} alt={e.subreddit} gv={gridview}/>
             )
         })
     } else {
@@ -34,9 +34,15 @@ const MediaBar = (props) => {
     
 
     return (
+        <div>
+
         <div className="photoview">
             {mediaList}
-            {isFetching && <div className="Loading more">Loading...</div>}
+            
+        </div>
+        <div>
+            {isFetching && <div className="loading"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>}
+        </div>
         </div>
         
     );

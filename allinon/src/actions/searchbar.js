@@ -1,4 +1,4 @@
-import { ADD_SUBREDDIT, DELETE_SUBREDDIT, EMPTY_POSTS, EMPTY_TAGS } from './index';
+import { ADD_SUBREDDIT, DELETE_SUBREDDIT, EMPTY_POSTS, EMPTY_TAGS, INC_FETCH_COUNTER } from './index';
 import { fetchPosts } from './fetch';
 import { filterTag } from './filter';
 
@@ -9,7 +9,7 @@ function addHashtag(hashtag) {
     };
 }
 
-function deleteHashtag(tagid) {
+export function deleteHashtag(tagid) {
     return {
         type: DELETE_SUBREDDIT,
         tagid
@@ -28,23 +28,32 @@ function emptyTags() {
     }
 }
 
+function increaseFetchingCounter() {
+    return {
+        type: INC_FETCH_COUNTER
+    }
+}
+
 export function filterPosts(tagid,tag) {
     return (dispatch) => {
-        dispatch(deleteHashtag(tagid));
+        dispatch(deleteHashtag(tag));
         dispatch(filterTag(tag));
     }
 }
 
 export function processQuery(tags) {
-    console.log(tags)
-    let searchtags = tags.searchValues.split(" ");
-    searchtags = searchtags.filter(e => e !== "");
-    return (dispatch) => {
-        dispatch(emptyTags());
-        dispatch(emptyPosts());
-        searchtags.forEach(tag => {
-            dispatch(addHashtag(tag));
-            dispatch(fetchPosts(tag, "top"));
-        }) 
-    }
+    if(tags.searchValues !== undefined) {
+        let searchtags = tags.searchValues.split(" ");
+        searchtags = searchtags.filter(e => e !== "");
+        return (dispatch) => {
+            dispatch(emptyTags());
+            dispatch(emptyPosts());
+            searchtags.forEach(tag => {
+                dispatch(addHashtag(tag));
+                dispatch(fetchPosts(tag, tags.sortposts));
+                dispatch(increaseFetchingCounter());
+            }) 
+        }
+    } 
+    
 }
