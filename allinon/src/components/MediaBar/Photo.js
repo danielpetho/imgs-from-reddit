@@ -9,7 +9,7 @@ const Photo = (props) => {
         <div className={gridview_container}>
             <a href={link} ><img  src={src} className={gridview_photo} alt={alt}></img>  </a>
             <div className="overlay">
-                <div className="text">{"r/"+alt}</div>
+                <div className="overlay__text">{"r/"+alt}</div>
             </div>
         </div>
         ) : (

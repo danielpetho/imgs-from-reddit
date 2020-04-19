@@ -29,7 +29,8 @@ export function postsReducer(state = {
             })
         case EMPTY_POSTS:
             return Object.assign({}, state, {
-                items: []
+                items: [],
+                fetchLogs: []
             })
         case REQUEST_POSTS:
             return Object.assign({}, state, {
@@ -63,13 +64,12 @@ export function postsReducer(state = {
 
             let flogs = state.fetchLogs;
             flogs = flogs.filter(e => {
-                return e.subreddit === fetchLog;
+                return e.subreddit !== fetchLog.subreddit;
             })
             flogs.push(fetchLog);
             return Object.assign({}, state, {
                 lastUpdated: action.receivedAt,
-                fetchLogs: flogs,
-                isFetching: false
+                fetchLogs: flogs
             })
         case RECEIVE_POSTS:
             /*

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import AppContainer from './containers/AppContainer';
-import { store } from './reducers/index';
 import { Provider } from 'react-redux';
 import { HashRouter as Router, Route } from "react-router-dom";
-import About from './components/layout/About';
+import './index.css';
+import { store } from './reducers/index';
+import AppContainer from './components/App/AppContainer';
+import About from './components/About/About';
 
 ReactDOM.render(
     (< Provider store={store} >

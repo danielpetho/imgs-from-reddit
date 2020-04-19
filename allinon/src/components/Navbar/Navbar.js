@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import logo from '../../logo.png';
+import './styles.css'
 
 const Navbar = (props) => {
     let {openMobileSearch, openMobileSettings, menus} = props;
@@ -8,9 +8,9 @@ const Navbar = (props) => {
     const menuIcon = menus.openmobilesets === true ? "close" : "menu";
     return (
         <nav className="navbar">
-            <span className="search-mobile"><i onClick={() => openMobileSearch()} className="material-icons md-12">{searchIcon}</i></span>
+            <span className="search__icon"><i onClick={() => openMobileSearch()} className="material-icons md-12">{searchIcon}</i></span>
             <span className="logodiv"><img className="logo" src={logo} alt="logo"></img></span>
-            <span className="menu-mobile"><i onClick={() => openMobileSettings()} className="material-icons md-12">{menuIcon}</i></span>
+            <span className="menu__icon"><i onClick={() => openMobileSettings()} className="material-icons md-12">{menuIcon}</i></span>
         </nav>
     );
 };

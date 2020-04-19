@@ -1,8 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../logo.png';
-import SearchBarContainer from '../../containers/SearchBarContainer';
-import HashtagBarContainer from '../../containers/HashtagBarContainer';
+import SearchBarContainer from '../SearchBar/SearchBarContainer';
+import SubredditBarContainer from '../SubredditBar/SubredditBarContainer';
 
 const MobileSearch = (props) => {
     const {settings, onToggle, handleSubmit } = props;
@@ -21,7 +19,7 @@ const MobileSearch = (props) => {
             </div>
         </div>
         <div className="mobile-search-hashtagbar">
-            <HashtagBarContainer />
+            <SubredditBarContainer />
 
         </div>
         </div>

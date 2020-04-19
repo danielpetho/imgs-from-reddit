@@ -1,0 +1,42 @@
+
+.subreddit__bar {
+    background-color: #F1F1F1;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0.2em 3em 0.6em 3em;
+  
+}
+  
+.subreddit {
+    margin-right: 1.2em;
+    margin-top: 0.6em; 
+    background-color: #C4C4C4;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.7em;
+    color: #3D6CA4;
+    border-radius: 30px;
+  
+}
+  
+.subreddit * {
+    background: none;
+    padding: 0.3em 0.3em 0.3em 0.5em;
+}
+  
+.subreddit__close {
+    cursor: pointer;
+}
+  
+.subreddit__close:hover {
+    cursor: pointer;
+    color: gray;
+}
+
+
+@media screen and (max-width:850px) {
+  .subreddit__bar {
+      display: none;
+  }
+}

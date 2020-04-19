@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
-import MobileSearch from "../components/layout/MobileSearch";
-import { toggleSettings, openMobileSearch, openMobileSettings } from "../actions/settings";
-import { filterPosts } from "../actions/searchbar";
+import MobileSearch from "./MobileSearch";
+import { toggleSettings } from "../../actions/settings";
+import { filterPosts } from "../../actions/searchbar";
 
 function mapStateToProps(state) {
     return {

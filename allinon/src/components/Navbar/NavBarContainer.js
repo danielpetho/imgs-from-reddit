@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import { openMobileSearch, openMobileSettings } from "../actions/settings";
-import Navbar from "../components/layout/Navbar";
+import { openMobileSearch, openMobileSettings } from "../../actions/settings";
+import Navbar from "./Navbar";
 
 function mapStateToProps(state, props) {
     return {

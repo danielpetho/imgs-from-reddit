@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Photo from '../images/Photo';
+import Photo from './Photo';
 
 const MediaBar = (props) => {
     const { settings, filteredPosts, isFetching, fetchMore, fetchLogs} = props;
@@ -8,7 +8,9 @@ const MediaBar = (props) => {
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
-            fetchLogs.forEach(e => {
+            if (!isFetching) 
+                fetchLogs.forEach(e => {
+                console.log(e.subreddit);
                 fetchMore(e.subreddit, fetchBy, e.after);
             })
           }

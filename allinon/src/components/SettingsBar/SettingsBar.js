@@ -1,6 +1,5 @@
 import React from 'react';
-import SearchBarContainer from '../../containers/SearchBarContainer';
-import {Link} from 'react-router-dom';
+import SearchBarContainer from '../SearchBar/SearchBarContainer';
 
 const SettingsBar = (props) => {
     const {settings, onToggle, handleSubmit } = props;

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import MediaBar from "../components/layout/MediaBar";
-import { fetchPosts } from "../actions/fetch";
+import MediaBar from "./MediaBar";
+import { fetchPosts } from "../../actions/fetch";
 
 function mapStateToProps(state) {
     return {

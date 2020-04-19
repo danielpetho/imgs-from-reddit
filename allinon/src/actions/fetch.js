@@ -4,7 +4,6 @@ import { deleteHashtag } from "./searchbar";
 export function fetchPosts(subreddit, sort, after) {
 
     return function (dispatch) {
-        console.log(sort)
         dispatch(requestPosts(subreddit));
 
         let afterStr = "";

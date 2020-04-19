@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
-import formValueSelector from 'redux-form/lib/formValueSelector';
-
+import "./styles.css"
 
 const required = value => (value || typeof value === 'number' ? undefined : 'Required')
 
 let SearchForm = (props) => {
-    const {handleSubmit, fetchBy} = props;
+    const {handleSubmit} = props;
     return <form className="searchbar" onSubmit={handleSubmit}>
         <Field validate={[required]} type="text" name="searchValues" placeholder="minimalist_art..." component="input"/>
           <Field className="nodisplayfetchBy"
@@ -23,8 +22,6 @@ let SearchFormContainer = reduxForm({
     form: 'searchForm',
     enableReinitialize : true
 })(SearchForm)
-
-const selector = formValueSelector('searchForm')
 
 SearchFormContainer = connect(
     state => ({

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import SettingsBar from "../components/layout/SettingsBar";
-import { toggleSettings } from "../actions/settings";
+import SettingsBar from "./SettingsBar";
+import { toggleSettings } from "../../actions/settings";
 
 function mapStateToProps(state, props) {
     return {

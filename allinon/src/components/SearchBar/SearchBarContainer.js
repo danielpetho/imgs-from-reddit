@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import SearchBar from "../components/layout/SearchBar";
-import {processQuery} from "../actions/searchbar";
+import SearchBar from "./SearchBar";
+import {processQuery} from "../../actions/searchbar";
 
 function mapStateToProps(state, props) {
     return {
