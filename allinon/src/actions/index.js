@@ -6,8 +6,8 @@ export const NOT_FETCH = 'NOT_FETCH';
 export const INC_FETCH_COUNTER = 'INC_FETCH_COUNTER';
 
 export const EMPTY_POSTS = 'EMPTY_POSTS';
-export const EMPTY_TAGS = 'EMPTY_TAGS';
-export const FILTER_TAG = 'FILTER_TAG'
+export const EMPTY_SUBS = 'EMPTY_SUBS';
+export const DELETE_POSTS = 'DELETE_POSTS'
 export const SORT_POSTS = 'SORT_POSTS'
 
 export const TOGGLE_VIDEOS = 'TOGGLE_VIDEOS';

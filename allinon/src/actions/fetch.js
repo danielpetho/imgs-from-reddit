@@ -1,5 +1,6 @@
 import { REQUEST_POSTS, RECEIVE_POSTS, LOG_FETCH, NOT_FETCH } from "./index";
-import { deleteHashtag } from "./searchbar";
+import { deleteSubreddit } from "./searchbar";
+
 
 export function fetchPosts(subreddit, sort, after) {
 
@@ -20,7 +21,7 @@ export function fetchPosts(subreddit, sort, after) {
                 response =>
                     response.json(),
                 error => {
-                    dispatch(deleteHashtag("r/"+subreddit));
+                    dispatch(deleteSubreddit("r/"+subreddit));
                 }
 
             )
@@ -44,6 +45,9 @@ export function notFetch(subreddit) {
     }
 }
 
+/**
+ * request posts from the subreddit
+ */
 export function requestPosts(subreddit) {
     return {
         type: REQUEST_POSTS,
@@ -51,6 +55,9 @@ export function requestPosts(subreddit) {
     }
 }
 
+/** 
+ * receive posts, and map the json data
+*/
 export function receivePosts(subreddit, json) {
     return {
         type: RECEIVE_POSTS,
@@ -59,6 +66,9 @@ export function receivePosts(subreddit, json) {
     }
 }
 
+/*
+ * logs when the posts received by subreddit, and save before, after 
+ */
 export function logFetch(subreddit, json) {
     return {
         type: LOG_FETCH,

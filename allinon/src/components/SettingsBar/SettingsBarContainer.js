@@ -11,7 +11,6 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch, props) {
     return {
         onToggle: (type, flag) => dispatch(toggleSettings(type, flag)),
-
     };
 }
 

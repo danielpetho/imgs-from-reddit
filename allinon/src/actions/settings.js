@@ -1,6 +1,8 @@
 import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT, MOBILE_SEARCH, MOBILE_SETTINGS} from './index';
-import { sortPosts } from './filter';
 
+/** 
+ * toggle between grid view = more images with the same size
+ * */ 
 function toggleView(view) {
     return {
         type: TOGGLE_VIEW,
@@ -8,6 +10,9 @@ function toggleView(view) {
     };
 }
 
+/**
+ *  sort posts by flag
+ * */ 
 function toggleSort(sortposts) {
     return {
         type: TOGGLE_SORT,
@@ -15,6 +20,9 @@ function toggleSort(sortposts) {
     };
 }
 
+/**
+ * show videos
+ * */ 
 function toggleVideos(videos) {
     return {
         type: TOGGLE_VIDEOS,
@@ -22,6 +30,9 @@ function toggleVideos(videos) {
     };
 }
 
+/**
+ *  show pictures
+ * */ 
 function togglePictures(pictures) {
     return {
         type: TOGGLE_PICTURES,
@@ -29,6 +40,9 @@ function togglePictures(pictures) {
     };
 }
 
+/**
+ *  autoplay videos or not
+ * */ 
 function toggleAutoplay(autoplay) {
     return {
         type: TOGGLE_AUTOPLAY,
@@ -36,6 +50,9 @@ function toggleAutoplay(autoplay) {
     };
 }
 
+/**
+ *  open/close the mobile searchbar
+ * */ 
 export function openMobileSearch() {
     return {
         type: MOBILE_SEARCH
@@ -43,6 +60,10 @@ export function openMobileSearch() {
     
 }
 
+
+/**
+ * open/close the mobile settings menu
+ * */ 
 export function openMobileSettings() {
     return {
         type: MOBILE_SETTINGS

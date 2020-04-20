@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { toggleSettings} from "../../actions/settings";
+import { toggleSettings} from "../../../actions/settings";
 import MobileSettings from "./MobileSettings";
 
 function mapStateToProps(state) {

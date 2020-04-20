@@ -75,4 +75,13 @@
         display: flex;
         padding-right: 0;
     }
+
+    .navbar__search-icon {
+        display: flex;
+        padding-left: 0;
+    }
+
+    .navbar__menu-icon {
+        display: none;
+    }
 }

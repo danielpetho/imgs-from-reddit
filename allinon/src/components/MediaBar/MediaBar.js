@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import Photo from './Photo';
+import './styles.css'
 
 const MediaBar = (props) => {
     const { settings, filteredPosts, isFetching, fetchMore, fetchLogs} = props;
     const fetchBy = settings.fetchBy;
     const gridview = settings.gridview;
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
@@ -14,11 +16,9 @@ const MediaBar = (props) => {
                 fetchMore(e.subreddit, fetchBy, e.after);
             })
           }
-
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
       }, [fetchBy, fetchLogs, fetchMore, props, isFetching]);
-
 
     let mediaList = []
 
@@ -29,23 +29,17 @@ const MediaBar = (props) => {
                <Photo key={index} id={e.created} link={e.permalink} src={e.url} mediaType={e.mediaType} alt={e.subreddit} gv={gridview}/>
             )
         })
-    } else {
-    
-    }
-    
+    } 
 
     return (
         <div>
-
-        <div className="photoview">
-            {mediaList}
-            
-        </div>
-        <div>
-            {isFetching && <div className="loading"><div className="lds-ring"><div></div><div></div><div></div><div></div></div></div>}
-        </div>
-        </div>
-        
+            <div className="imagebar">
+                {mediaList}    
+            </div>
+            <div>
+                {isFetching && <div className="loading__container"><div className="loading__icon"><div></div><div></div><div></div><div></div></div></div>}
+            </div>
+        </div>    
     );
 };
 
