@@ -8,9 +8,9 @@ const Navbar = (props) => {
     const menuIcon = menus.openmobilesets === true ? "close" : "menu";
     return (
         <nav className="navbar">
-            <span className="search__icon"><i onClick={() => openMobileSearch()} className="material-icons md-12">{searchIcon}</i></span>
-            <span className="logodiv"><img className="logo" src={logo} alt="logo"></img></span>
-            <span className="menu__icon"><i onClick={() => openMobileSettings()} className="material-icons md-12">{menuIcon}</i></span>
+            <span className="navbar__search-icon"><i onClick={() => openMobileSearch()} className="material-icons md-12">{searchIcon}</i></span>
+            <span className="navbar__logo"><img className="navbar__logo_item" src={logo} alt="logo"></img></span>
+            <span className="navbar__menu-icon"><i onClick={() => openMobileSettings()} className="material-icons md-12">{menuIcon}</i></span>
         </nav>
     );
 };
