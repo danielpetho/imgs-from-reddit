@@ -1,4 +1,4 @@
-import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT, MOBILE_SEARCH, MOBILE_SETTINGS} from './index';
+import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_FETCHBY, MOBILE_SEARCH, MOBILE_SETTINGS} from './index';
 
 /** 
  * toggle between grid view = more images with the same size
@@ -13,10 +13,10 @@ function toggleView(view) {
 /**
  *  sort posts by flag
  * */ 
-function toggleSort(sortposts) {
+function toggleFetchBy(fetchby) {
     return {
-        type: TOGGLE_SORT,
-        sortposts
+        type: TOGGLE_FETCHBY,
+        fetchby
     };
 }
 
@@ -83,8 +83,8 @@ export function toggleSettings(setting, flag) {
             case "videos":
                 dispatch(toggleVideos(flag));
                 break;
-            case "sortposts":
-                dispatch(toggleSort(flag));
+            case "fetchby":
+                dispatch(toggleFetchBy(flag));
                 //dispatch(sortPosts(flag));
                 break;
             case "gridview":

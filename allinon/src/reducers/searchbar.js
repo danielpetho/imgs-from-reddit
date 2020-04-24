@@ -1,30 +1,33 @@
-import {EMPTY_TAGS, ADD_SUBREDDIT, DELETE_SUBREDDIT } from '../actions/index';
+import {EMPTY_SUBS, ADD_SUBREDDIT, DELETE_SUBREDDIT } from '../actions/index';
 
 let tagId = 2;
 
+/**
+ * Storing the state of the subreddit bar.
+ */
 export function searchReducer(state = {
-    hashtags: [
+    subreddits: [
 
     ]
 }, action) {
     switch (action.type) {
-        case EMPTY_TAGS:
+        case EMPTY_SUBS:
             return Object.assign({}, state, {
-                hashtags: []
+                subreddits: []
             });
         case ADD_SUBREDDIT:
-            let newHashtags = state.hashtags;
-            const obj = {id: ++tagId, tag: "r/"+action.hashtag}
-            newHashtags.push(obj);
+            let newSubs = state.subreddits;
+            const obj = {id: ++tagId, sub: "r/"+action.subreddit}
+            newSubs.push(obj);
             return Object.assign({}, state, {
-                hashtags: newHashtags
+                subreddits: newSubs
             });
         case DELETE_SUBREDDIT:
-            let tag = action.tagid.slice(0);
-            let newTags = state.hashtags;
-            newTags = newTags.filter(e => e.tag !== tag);
+            console.log(action)
+            let newSubreddits = state.subreddits;
+            newSubreddits = newSubreddits.filter(e => e.id !== action.subid);
             return Object.assign({}, state, {
-                hashtags: newTags
+                subreddits: newSubreddits
             });
         default:
             return state;

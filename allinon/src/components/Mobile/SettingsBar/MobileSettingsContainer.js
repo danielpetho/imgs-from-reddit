@@ -4,7 +4,6 @@ import MobileSettings from "./MobileSettings";
 
 function mapStateToProps(state) {
     return {
-        searchtags: state.searchtagState,
         settings: state.settingsState
 
     };

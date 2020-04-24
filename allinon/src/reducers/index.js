@@ -21,6 +21,6 @@ export const store = createStore(combineReducers({
 
 
     let initSubreddits = {
-        searchValues: "minimalist_art"
+        searchValues: "astronomy"
     }
 store.dispatch(processQuery(initSubreddits));

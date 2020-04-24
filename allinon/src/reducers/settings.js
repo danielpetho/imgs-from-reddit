@@ -1,11 +1,16 @@
-import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_SORT, MOBILE_SETTINGS, MOBILE_SEARCH } from '../actions/index';
+import { TOGGLE_VIEW, TOGGLE_AUTOPLAY, TOGGLE_PICTURES, TOGGLE_VIDEOS, TOGGLE_FETCHBY, MOBILE_SETTINGS, MOBILE_SEARCH } from '../actions/index';
 
+/**
+ * State of the view settings, fetchby flag: new / top, 
+ * State of the mobile menus: open / closed
+ * State of media settings: show videos / pictures / autoplay videos
+ */
 export function settingsReducer(state = {
     autoplay: true,
     videos: true,
     pictures: true,
     gridview: 'grid',
-    sortposts: 'new',
+    fetchby: 'top',
     openmobilesearch: false,
     openmobilesets: false
 }, action) {
@@ -19,10 +24,9 @@ export function settingsReducer(state = {
                 gridview: action.view
             });
 
-        case TOGGLE_SORT:
-
+        case TOGGLE_FETCHBY:
             return Object.assign({}, state, {
-                sortposts: action.sortposts
+                fetchby: action.fetchby
             });
 
         case TOGGLE_VIDEOS:
@@ -41,6 +45,8 @@ export function settingsReducer(state = {
                 });
             };
             return state;
+
+        // open mobile search menu - if setting menu was opened, close it.
         case MOBILE_SEARCH:
             let search_flag_0;
             let menu_flag_0;

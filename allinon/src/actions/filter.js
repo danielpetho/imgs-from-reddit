@@ -1,6 +1,6 @@
 import { DELETE_POSTS, SORT_POSTS, EMPTY_POSTS, EMPTY_SUBS } from ".";
 
-// 
+// delete the posts by subreddit
 export function deletePosts(subreddit) {
     return {
         type: DELETE_POSTS,

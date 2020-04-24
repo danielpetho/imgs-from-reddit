@@ -1,10 +1,9 @@
-import {NOT_FETCH, INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, EMPTY_POSTS, FILTER_TAG, SORT_POSTS, LOG_FETCH, INC_FETCH_COUNTER} from '../actions/index'
+import {NOT_FETCH, INVALIDATE_SUBREDDIT, REQUEST_POSTS, RECEIVE_POSTS, EMPTY_POSTS, DELETE_POSTS, SORT_POSTS, LOG_FETCH} from '../actions/index'
 
 export function postsReducer(state = {
     items: [],
     isFetching: false,
     didInvalidate: false,
-    fetchingCounter: 0,
     notexistingsubs: [],
     fetchLogs: []
 }, action) {
@@ -13,10 +12,11 @@ export function postsReducer(state = {
             return Object.assign({}, state, {
                 didInvalidate: true
             });
-        case FILTER_TAG:
-            let tag = action.tag.slice(2)
-            let filterPosts = state.items.filter(e => e.subreddit !== tag);
-            let filterFlogs = state.fetchLogs.filter(e => e.subreddit !== tag);
+        case DELETE_POSTS:
+            console.log(action);
+            let sub = action.subreddit.slice(2)
+            let filterPosts = state.items.filter(e => e.subreddit !== sub);
+            let filterFlogs = state.fetchLogs.filter(e => e.subreddit !== sub);
             return Object.assign({}, state, {
                 items: filterPosts,
                 fetchLogs: filterFlogs
@@ -43,12 +43,7 @@ export function postsReducer(state = {
             newnotexistingsubs.push(action.subreddit);
             return Object.assign({}, state, {
                 isFetching: false,
-                notexistingsubs: newnotexistingsubs,
-                fetchingCounter: state.fetchingCounter--
-            })
-        case INC_FETCH_COUNTER:
-            return Object.assign({}, state, {
-                fetchingCounter: state.fetchingCounter++
+                notexistingsubs: newnotexistingsubs
             })
         case LOG_FETCH:
             /*
@@ -88,14 +83,14 @@ export function postsReducer(state = {
                     url = e.url;
                     mediaType = "img";
                 } 
-                if (e.post_hint.includes("hosted:video")) {
+                /*if (e.post_hint.includes("hosted:video")) {
                     url = e.media.reddit_video.fallback_url;
                     mediaType = "video";
                 } 
                 if (e.post_hint.includes("rich:video")) {
                     url = e.url;
                     mediaType = "video";
-                }
+                }*/
 
                 /*
                  * create a new post
@@ -117,8 +112,7 @@ export function postsReducer(state = {
             return Object.assign({}, state, {
                 isFetching: false,
                 didInvalidate: false,
-                items: newItems,
-                fetchingCounter: state.fetchingCounter--
+                items: newItems
             });
         default:
             return state;

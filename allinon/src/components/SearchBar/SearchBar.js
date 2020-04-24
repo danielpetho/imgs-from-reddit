@@ -8,7 +8,7 @@ const required = value => (value || typeof value === 'number' ? undefined : 'Req
 let SearchForm = (props) => {
     const {handleSubmit} = props;
     return <form className="searchbar" onSubmit={handleSubmit}>
-        <Field validate={[required]} type="text" name="searchValues" placeholder="minimalist_art..." component="input"/>
+        <Field validate={[required]} type="text" name="searchValues" placeholder="type in subreddits..." component="input"/>
           <Field className="nodisplayfetchBy"
             name="sortposts"
             component="input"

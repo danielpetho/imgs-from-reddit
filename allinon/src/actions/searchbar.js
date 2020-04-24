@@ -26,9 +26,9 @@ export function deleteSubreddit(subid) {
  * delete the posts which belongs to the subreddit and also delete the the 
  * subreddit from the subreddit-bar
  */
- export function filterPosts(subreddit) {
+ export function filterPosts(subid, subreddit) {
     return (dispatch) => {
-        dispatch(deleteSubreddit(subreddit));
+        dispatch(deleteSubreddit(subid));
         dispatch(deletePosts(subreddit));
     }
 }
@@ -46,9 +46,9 @@ export function processQuery(subs) {
         return (dispatch) => {
             dispatch(emptySubs());
             dispatch(emptyPosts());
-            searchtags.forEach(sub => {
+            subreddits.forEach(sub => {
                 dispatch(addSubreddit(sub));
-                dispatch(fetchPosts(sub, subs.sortposts));
+                dispatch(fetchPosts(sub, subs.fetchby));
             }) 
         }
     } 

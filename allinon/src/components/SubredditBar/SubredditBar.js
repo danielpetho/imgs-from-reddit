@@ -7,7 +7,7 @@ const SubredditBar = (props) => {
     const { subreddits, onDelete } = props;
     const subredditList = subreddits.map(e => {
         return (
-           <Subreddit key={e.id} id={e.id} tag={e.tag} onDelete={onDelete}/>
+           <Subreddit key={e.id} id={e.id} sub={e.sub} onDelete={onDelete}/>
         )
     })
 

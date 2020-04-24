@@ -4,7 +4,7 @@ import './styles.css'
 
 const MediaBar = (props) => {
     const { settings, filteredPosts, isFetching, fetchMore, fetchLogs} = props;
-    const fetchBy = settings.fetchBy;
+    const fetchBy = settings.fetchby;
     const gridview = settings.gridview;
 
     useEffect(() => {
@@ -12,7 +12,6 @@ const MediaBar = (props) => {
             if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
             if (!isFetching) 
                 fetchLogs.forEach(e => {
-                console.log(e.subreddit);
                 fetchMore(e.subreddit, fetchBy, e.after);
             })
           }

@@ -4,13 +4,13 @@ import {filterPosts} from "../../actions/searchbar"
 
 function mapStateToProps(state) {
     return {
-        subreddits: state.searchtagState.hashtags
+        subreddits: state.searchtagState.subreddits
     };
 }
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        onDelete: (id, tag) => dispatch(filterPosts(id, tag))
+        onDelete: (id, sub) => dispatch(filterPosts(id, sub))
     };
 }
 

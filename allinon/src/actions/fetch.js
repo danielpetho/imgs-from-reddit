@@ -2,19 +2,24 @@ import { REQUEST_POSTS, RECEIVE_POSTS, LOG_FETCH, NOT_FETCH } from "./index";
 import { deleteSubreddit } from "./searchbar";
 
 
-export function fetchPosts(subreddit, sort, after) {
+/**
+ * fetch posts from the subreddit by fetchby flag. 
+ * If there's an after token, fetch only posts after the after token
+ * if there's no such subreddit, delete the sub from the subreddit bar
+ */
+export function fetchPosts(subreddit, fetchby, after) {
 
     return function (dispatch) {
         dispatch(requestPosts(subreddit));
 
-        let afterStr = "";
-        if (after === undefined) afterStr = "";
-        else afterStr = "&after=" + after; 
+        let afterTkn = "";
+        if (after === undefined) afterTkn = "";
+        else afterTkn = "&after=" + after; 
 
-        if (sort === "top") sort = "/top";
-        else sort = "/new"
+        if (fetchby === "top") fetchby = "/top";
+        else fetchby = "/new"
 
-        const fetchURL = `https://www.reddit.com/r/${subreddit}${sort}.json?&limit=50` + afterStr;
+        const fetchURL = `https://www.reddit.com/r/${subreddit}${fetchby}.json?&limit=50` + afterTkn;
         
         return fetch(fetchURL)
             .then(
@@ -38,6 +43,9 @@ export function fetchPosts(subreddit, sort, after) {
     }
 }
 
+/**
+ * Collect the notexisting subreddits to later print all of them on a modal (TODO)
+ */
 export function notFetch(subreddit) {
     return {
         type: NOT_FETCH,
@@ -67,7 +75,8 @@ export function receivePosts(subreddit, json) {
 }
 
 /*
- * logs when the posts received by subreddit, and save before, after 
+ * logs when the posts received, and 
+ * save the before + after token for "loading more" query
  */
 export function logFetch(subreddit, json) {
     return {

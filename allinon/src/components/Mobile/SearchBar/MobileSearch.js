@@ -11,8 +11,8 @@ const MobileSearch = (props) => {
         <div className="mobile__searchbar_input">
             <div>
                 <ul className="mobile__fetching-settings">
-                    <li onClick={() => onToggle("sortposts", "top")} className={settings['sortposts'] === "top" ? "settingsbar__item_on" : "settingsbar__item_off"}>top</li>
-                    <li onClick={() => onToggle("sortposts", "new")} className={settings['sortposts'] === "new" ? "settingsbar__item_on" : "settingsbar__item_off"}>new</li>
+                    <li onClick={() => onToggle("fetchby", "top")} className={settings.fetchby === "top" ? "settingsbar__item_on" : "settingsbar__item_off"}>top</li>
+                    <li onClick={() => onToggle("fetchby", "new")} className={settings.fetchby === "new" ? "settingsbar__item_on" : "settingsbar__item_off"}>new</li>
                 </ul>
             </div>
             <div>

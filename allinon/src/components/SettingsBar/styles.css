@@ -38,6 +38,11 @@
     padding-right: 1em;
     color: black;
   }
+
+  .settingsbar__search-section li {
+    padding-left: 1em;
+    color: black;
+  }
   
   
   @media screen and (max-width:850px) {
