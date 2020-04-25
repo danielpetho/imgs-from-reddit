@@ -23,7 +23,6 @@ export function searchReducer(state = {
                 subreddits: newSubs
             });
         case DELETE_SUBREDDIT:
-            console.log(action)
             let newSubreddits = state.subreddits;
             newSubreddits = newSubreddits.filter(e => e.id !== action.subid);
             return Object.assign({}, state, {
