@@ -1,6 +1,8 @@
 # imgs-from-reddit
 A responsive React + Redux web application, querying images and gifs from various subreddits using the Reddit API.
 
+![desktop UI screencapture](screenshot-desktop.gif?raw=true)  
+
 ## Install necessary npm packages
 
 ```bash
