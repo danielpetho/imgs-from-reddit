@@ -16,7 +16,7 @@ npm run start
 ```
 
 ## Support
-Feel free to ask any question or point out any mistake
+Feel free to ask any question or point out mistakes
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
