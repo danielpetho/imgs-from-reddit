@@ -13,10 +13,9 @@ export function postsReducer(state = {
                 didInvalidate: true
             });
         case DELETE_POSTS:
-            console.log(action);
             let sub = action.subreddit.slice(2)
-            let filterPosts = state.items.filter(e => e.subreddit !== sub);
-            let filterFlogs = state.fetchLogs.filter(e => e.subreddit !== sub);
+            let filterPosts = state.items.filter(e => e.subreddit.toUpperCase() !== sub.toUpperCase());
+            let filterFlogs = state.fetchLogs.filter(e => e.subreddit.toUpperCase() !== sub.toUpperCase());
             return Object.assign({}, state, {
                 items: filterPosts,
                 fetchLogs: filterFlogs
